@@ -15,6 +15,20 @@ app.get('/roll/:number', (req, res) => {
     }
 })
 
+const collectibles = [
+    { name: 'shiny ball', price: 5.95 },
+    { name: 'autographed picture of a dog', price: 10 },
+    { name: 'vintage 1970s yogurt SOLD AS-IS', price: 0.99 }
+  ];
+
+  app.get('/collectibles/:itemIndex', (req, res) => {
+    const item = req.params.itemIndex;
+    let collectible = collectibles
+    if (item === collectible) {
+        res.send('So, you want the ${collectible.name}? For ${collectible.price}, it can be yours!')
+    }
+  })
+
 app.listen(3000, () => {
     console.log('Listening on port 3000');
   });
