@@ -22,10 +22,13 @@ const collectibles = [
   ];
 
   app.get('/collectibles/:itemIndex', (req, res) => {
-    const item = req.params.itemIndex;
-    let collectible = collectibles
-    if (item === collectible) {
+    const itemIndex = parseInt(req.params.itemIndex);  // Parse itemIndex to an integer
+    const collectible = collectibles[itemIndex];
+    if (collectible) {
         res.send('So, you want the ${collectible.name}? For ${collectible.price}, it can be yours!')
+    }
+    else {
+      res.send(`This item is not yet in stock. Check back soon!`)
     }
   })
 
